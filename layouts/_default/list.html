@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html lang="{{ with .Site.LanguageCode }}{{ . }}{{ else }}en-US{{ end }}">
+
+    {{ partial "header.html" . }}
+    <body>
+
+        {{ "<!-- Wrapper -->" | safeHTML }}
+        <div id="page-wrapper">
+            {{ partial "nav.html" . }}
+
+            {{ "<!-- Main -->" | safeHTML }}
+            <div id="main" class="wrapper style1">
+                <div class="container">
+                    <header class="major">
+                        <h2>{{ .Title }}</h2>
+                        <p>{{ .Params.description }}</p>
+                    </header>
+                    <section id="content">
+                        <div class="box alt">
+                            <div class="row uniform">
+                                {{ range .Data.Pages }}
+                                <section class="4u 6u(medium) 12u$(xsmall)">
+                                    <h3><a href="{{ .Permalink }}">{{ .Title }}</a></h3>
+                                    <p>at {{ .Date.Format "Monday January 1, 2006" }}</p>
+                                    <p>{{ .Summary }}</p>
+                                    <footer>
+                                        <ul class="actions">
+                                            <li><a href="{{ .Permalink }}" class="button">Read Mode</a></li>
+                                        </ul>
+                                    </footer>
+                                </section>
+                                {{ end }}
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+                    
+            {{ partial "footer.html" . }}
+        </div>
+
+        {{ partial "js.html" . }}
+
+    </body>
+</html>

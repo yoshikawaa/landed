@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html lang="{{ with .Site.LanguageCode }}{{ . }}{{ else }}en-US{{ end }}">
+
+	{{ partial "header.html" . }}
+	<body class="landing">
+
+		{{ "<!-- Wrapper -->" | safeHTML }}
+		<div id="page-wrapper">
+			{{ partial "nav.html" . }}
+			{{ partial "banner.html" . }}
+
+			{{ "<!-- Main -->" | safeHTML }}
+			{{ partial "spotlights.html" . }}
+			{{ if eq .Site.Params.box.style "tile" }}
+				{{ partial "tile.html" . }}
+			{{ else if eq .Site.Params.box.style "entry" }}
+				{{ partial "entry.html" . }}
+			{{ end }}
+			{{ partial "mailform.html" . }}
+
+			{{ partial "footer.html" . }}
+		</div>
+
+		{{ partial "js.html" . }}
+
+	</body>
+</html>

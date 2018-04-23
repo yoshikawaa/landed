@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html lang="{{ with .Site.LanguageCode }}{{ . }}{{ else }}en-US{{ end }}">
+
+    {{ partial "header.html" . }}
+    <body>
+
+        {{ "<!-- Wrapper -->" | safeHTML }}
+        <div id="page-wrapper">
+            {{ partial "nav.html" . }}
+
+            {{ "<!-- Main -->" | safeHTML }}
+            <div id="main" class="wrapper style1">
+                <div class="container">
+                    <header class="major">
+                        <h2>{{ .Title }}</h2>
+                        <p>{{ .Params.description }}</p>
+                    </header>
+                    {{ if eq .Site.Params.sidebar "left" }}
+                    <div class="row 150%">
+                        <div class="4u 12u$(medium)">
+                            {{ partial "sidebar.html" . }}
+                        </div>
+                        <div class="8u$ 12u$(medium) important(medium)">
+                    {{ else if eq .Site.Params.sidebar "right" }}
+                    <div class="row 150%">
+                        <div class="8u 12u$(medium)">
+                    {{ end }}
+                        {{ partial "content.html" . }}
+                    {{ if eq .Site.Params.sidebar "left" }}
+                        </div>
+                    </div>
+                    {{ else if eq .Site.Params.sidebar "right" }}
+                        </div>
+                        <div class="4u$ 12u$(medium)">
+                            {{ partial "sidebar.html" . }}
+                        </div>
+                    </div>
+                    {{ end }}
+                </div>
+            </div>
+            
+            {{ partial "footer.html" . }}
+        </div>
+
+        {{ partial "js.html" . }}
+
+    </body>
+</html>

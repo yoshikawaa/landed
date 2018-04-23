@@ -1,0 +1,14 @@
+{{ "<!-- Scripts -->" | safeHTML }}
+<script src="{{ "js/jquery.min.js" }}"></script>
+<script src="{{ "js/jquery.scrolly.min.js" }}"></script>
+<script src="{{ "js/jquery.dropotron.min.js" }}"></script>
+<script src="{{ "js/jquery.scrollex.min.js" }}"></script>
+<script src="{{ "js/skel.min.js" }}"></script>
+<script src="{{ "js/util.js" }}"></script>
+<!--[if lte IE 8]><script src="js/ie/respond.min.js"></script><![endif]-->
+<script src="{{ "js/main.js" }}"></script>
+
+{{ template "_internal/google_analytics_async.html" . }}
+{{ range .Site.Params.custom_js }}
+<script src="{{ . }}"></script>
+{{ end }}

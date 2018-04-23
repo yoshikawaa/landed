@@ -1,0 +1,27 @@
+{{ "<!-- Entry -->" | safeHTML }}
+{{ if .Site.Params.box }}
+<section id="four" class="wrapper style1 special fade-up">
+    <div class="container">
+        <header class="major">
+            <h2>{{ .Site.Params.box.title }}</h2>
+            <p>{{ .Site.Params.box.description }}</p>
+        </header>
+        <div class="box alt">
+            <div class="row uniform">
+                {{ range $index, $element := (.Paginator 6).Pages }}
+                <section class="4u 6u{{ if not (modBool $index 2) }}${{ end }}(medium) 12u$(xsmall)">
+                    <h3><a href="{{ .Permalink }}">{{ .Title }}</a></h3>
+                    <p>at {{ .Date.Format "Monday January 1, 2006" }}</p>
+                    <p>{{ .Summary }}</p>
+                    <footer>
+                        <ul class="actions">
+                            <li><a href="{{ .Permalink }}" class="button">Read Mode</a></li>
+                        </ul>
+                    </footer>
+                </section>
+                {{ end }}
+            </div>
+        </div>
+    </div>
+</section>
+{{ end }}

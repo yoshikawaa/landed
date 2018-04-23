@@ -1,0 +1,17 @@
+{{ "<!-- Banner -->" | safeHTML }}
+{{ with .Site.Params.banner }}
+<section id="banner">
+    <div class="content">
+        <header>
+            <h2>{{ .title }}</h2>
+            <p>{{ .description | markdownify }}</p>
+        </header>
+        <span class="image">
+            <img src="{{ .image }}" alt="" />
+        </span>
+    </div>
+    {{ with .next }}
+    <a href="{{ . }}" class="goto-next scrolly">Next</a>
+    {{ end }}
+</section>
+{{ end }}

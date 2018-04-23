@@ -1,0 +1,9 @@
+{{ "<!-- Content -->" | safeHTML }}
+<section id="content">
+    {{ if .Params.image }}
+    <div class="image fit">
+        <img src="{{ .Params.image | absURL }}" alt="" />
+    </div>
+    {{ end }}
+    {{ .Content }}    
+</section>

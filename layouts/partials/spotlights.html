@@ -1,0 +1,48 @@
+{{ "<!-- Spotlights -->" | safeHTML }}
+{{ range $index, $element := .Site.Params.spotlight }}
+{{ if eq .style "bottom" }}
+<section id="{{ .id }}" class="spotlight style{{ add $index 1 }} bottom">
+    <span class="image fit main"><img src="{{ .image }}" alt="" /></span>
+    <div class="content">
+        <div class="container">
+            <div class="row">
+                <div class="4u 12u$(medium)">
+                    <header>
+                        <h2>{{ .title }}</h2>
+                        <p>{{ .description }}</p>
+                    </header>
+                </div>
+                <div class="4u 12u$(medium)">
+                    <p>{{ .content1 | markdownify }}</p>
+                </div>
+                <div class="4u$ 12u$(medium)">
+                    <p>{{ .content2 | markdownify }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{ with .next }}
+    <a href="{{ . }}" class="goto-next scrolly">Next</a>
+    {{ end }}
+</section>
+{{ else }}
+<section id="{{ .id }}" class="spotlight style{{ add $index 1 }} {{ .style }}">
+    <span class="image fit main"><img src="{{ .image }}" alt="" /></span>
+    <div class="content">
+        <header>
+            <h2>{{ .title }}</h2>
+            <p>{{ .description }}</p>
+        </header>
+        <p>{{ .content }}</p>
+        <ul class="actions">
+            {{ range .link }}
+            <li><a href="{{ .url }}" class="{{ .style }}">{{ .name }}</a></li>
+            {{ end }}
+        </ul>
+    </div>
+    {{ with .next }}
+    <a href="{{ . }}" class="goto-next scrolly">Next</a>
+    {{ end }}
+</section>
+{{ end }}
+{{ end }}

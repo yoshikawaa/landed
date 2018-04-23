@@ -1,0 +1,29 @@
+{{ "<!-- Tile -->" | safeHTML}}
+{{ with .Site.Params.box }}
+<section id="{{ .id }}" class="wrapper style1 special fade-up">
+    <div class="container">
+        <header class="major">
+            <h2>{{ .title }}</h2>
+            <p>{{ .description }}</p>
+        </header>
+        <div class="box alt">
+            <div class="row uniform">
+                {{ range $index, $element := .tile }}
+                <section class="4u 6u{{ if not (modBool $index 2) }}${{ end }}(medium) 12u$(xsmall)">
+                    <span class="icon alt major {{ .icon }}"></span>
+                    <h3>{{ .title }}</h3>
+                    <p>{{ .description }}</p>
+                </section>
+                {{ end }}
+            </div>
+        </div>
+        <footer class="major">
+            <ul class="actions">
+                {{ range .link }}
+                <li><a href="{{ .url }}" class="{{ .style }}">{{ .name }}</a></li>
+                {{ end }}
+            </ul>
+        </footer>
+    </div>
+</section>
+{{ end }}
