@@ -33,7 +33,7 @@
             <h2>{{ .title }}</h2>
             <p>{{ .description }}</p>
         </header>
-        <p>{{ .content }}</p>
+        <p>{{ .content | markdownify }}</p>
         <ul class="actions">
             {{ range .link }}
             <li><a href="{{ .url }}" class="{{ .style }}">{{ .name }}</a></li>
